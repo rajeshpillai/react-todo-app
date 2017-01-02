@@ -57,12 +57,16 @@ class TodoApp extends React.Component{
   }
 
   addTodo(todo){   
-    var list = this.state.todoList;
-    list.push({name: todo});
+    const {todoList} = this.state;
+    ///var list = this.state.todoList;
+    //list.push({name: todo});
     
-    console.log("todos: ", list);
+    console.log("todos: ", todoList);
 
-     this.setState({todoList: list});       
+    //this.setState({todoList: list});       
+    this.setState({
+      todoList: todoList.concat({name: todo})
+    })
   }
 
   deleteTodo(id){
