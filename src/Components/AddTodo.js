@@ -12,17 +12,19 @@ class AddTodo extends React.Component{
   };
 
   add() {
-        if(this.refs.myInput.value.length > 0){ 
-            this.props.addHandler(this.refs.myInput.value);
-            this.refs.myInput.value="";       
+        if(this.input.value.length > 0){ 
+            this.props.addHandler(this.input.value);
+            this.input.value="";       
         }
-        this.refs.myInput.focus();
+        //this.refs.myInput.focus();
+        this.input.focus();
   }
 
   render(){
      return(     
        <div>
-        <input type="text"  ref="myInput"/>
+        <input type="text"  ref2="myInput"  
+          ref={(input) => { this.input = input; }} />
         <input type="button" value="Add" onClick = {this.add}/>
         {/*<input type="button" value="Submit" onClick = {() => this.add()}/>*/}
 
