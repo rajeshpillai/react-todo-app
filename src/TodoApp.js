@@ -9,8 +9,8 @@ class TodoApp extends React.Component{
     super(props);
     this.state={
       todoList:[
-          {"name":"Build an ecommerce app"},
-          {"name":"Create a todo app"}            
+          {"name":"Build an ecommerce app", completed: false},
+          {"name":"Create a todo app", completed: true}            
         ]
       }
       this.addTodo = this.addTodo.bind(this);
@@ -18,6 +18,7 @@ class TodoApp extends React.Component{
       this.editTodo = this.editTodo.bind(this);
       this.saveTodo = this.saveTodo.bind(this);
       this.cancelTodo = this.cancelTodo.bind(this);
+      this.toggle = this.toggle.bind(this);
     }
 
   getInitialState() {
@@ -106,6 +107,19 @@ class TodoApp extends React.Component{
     this.setState({todoList: list});  
   };
 
+  toggle(todo) {
+    console.log(this.state);
+    var todos = this.state.todoList;
+    todos.map(function (item) {
+      if (item == todo) {
+        item.completed = !todo.completed;    
+      }
+    });
+
+    this.setState({ todoList: todos});
+
+  }
+
   render(){
     return(     
       <div>
@@ -115,7 +129,8 @@ class TodoApp extends React.Component{
                 deleteHandler= {this.deleteTodo}
                 editHandler={this.editTodo}
                 cancelHandler={this.cancelTodo} 
-                saveHandler={this.saveTodo} 
+                saveHandler={this.saveTodo}
+                onToggle = {this.toggle} 
          />
       </div>
     )

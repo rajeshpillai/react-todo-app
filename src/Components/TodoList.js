@@ -1,5 +1,6 @@
 import React, {PropTypes} from 'react';
 import $ from 'jquery'; 
+import './todo.css';
 
 class TodoList extends React.Component{
   constructor(){
@@ -39,12 +40,19 @@ edit(i){
 }
 
  render(){
+      const style = {
+         textDecoration: 'line-through'
+      };
+
       return(      
         <ul>                 
            {this.props.todoList.map((todo,i)=> 
-              <li key={i}>{!todo.isInEditMode?todo.name:""} 
+              
+              <li key={i} onClick={() =>this.props.onToggle(todo)}>
+                {!todo.isInEditMode?<span className={todo.completed ? "completed" : ""}>
+                  {todo.name}</span>:""} 
               {todo.isInEditMode == true? 
-                <span>
+                <span >
                   <input type="text" 
                     defaultValue={todo.name} 
                     id={'txt_'+ i} 
