@@ -48,7 +48,7 @@ edit(i){
         <ul>                 
            {this.props.todoList.map((todo,i)=> 
               
-              <li key={i} onClick={() =>this.props.onToggle(todo)}>
+              <li key={i} onClick={()=>this.props.onToggle(todo)}>
                 {!todo.isInEditMode?<span className={todo.completed ? "completed" : ""}>
                   {todo.name}</span>:""} 
               {todo.isInEditMode == true? 

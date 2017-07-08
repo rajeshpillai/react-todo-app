@@ -21,16 +21,6 @@ class TodoApp extends React.Component{
       this.toggle = this.toggle.bind(this);
     }
 
-  getInitialState() {
-    console.log("TodoApp: getInitialState...");
-    return {
-      todoList:[
-          {"name":"Build an ecommerce app"},
-          {"name":"Create a todo app"}            
-        ]
-    }
-  }
-
   componentWillMount () {
     console.log("TodoApp: componentWillMount...");
   }
@@ -111,7 +101,7 @@ class TodoApp extends React.Component{
     console.log(this.state);
     var todos = this.state.todoList;
     todos.map(function (item) {
-      if (item == todo) {
+      if (item === todo) {
         item.completed = !todo.completed;    
       }
     });
@@ -126,7 +116,7 @@ class TodoApp extends React.Component{
         <h2>My todo App</h2>
         <AddTodo addHandler={this.addTodo}/>
         <TodoList todoList ={this.state.todoList}
-                deleteHandler= {this.deleteTodo}
+                deleteHandler={this.deleteTodo}
                 editHandler={this.editTodo}
                 cancelHandler={this.cancelTodo} 
                 saveHandler={this.saveTodo}

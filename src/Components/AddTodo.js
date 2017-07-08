@@ -23,9 +23,9 @@ class AddTodo extends React.Component{
   render(){
      return(     
        <div>
-        <input type="text"  ref2="myInput"  
-          ref={(input) => { this.input = input; }} />
-        <input type="button" value="Add" onClick = {this.add}/>
+        <input type="text" 
+          ref={(input) => {this.input=input;}} />
+        <input type="button" value="Add" onClick={this.add}/>
         {/*<input type="button" value="Submit" onClick = {() => this.add()}/>*/}
 
       </div>
